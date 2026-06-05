@@ -13,7 +13,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);ove
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--soft)}::-webkit-scrollbar-thumb{background:var(--warm)}
 
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(18,16,14,.85)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(18,16,14,0.8);border-bottom:1px solid rgba(212,169,106,0.12)}
 .nav-logo{font-family:'Playfair Display',serif;font-size:19px;color:var(--cream);text-decoration:none;letter-spacing:.05em}
 .nav-links{display:flex;gap:28px;list-style:none}
 .nav-links a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,247,242,.5);text-decoration:none;transition:color .2s}
@@ -25,7 +25,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);ove
 .mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(18,16,14,.97);z-index:199;padding:24px 24px 32px;border-bottom:1px solid rgba(212,169,106,.1)}
 .mobile-menu.open{display:block}
 .mobile-menu ul{list-style:none;display:flex;flex-direction:column;gap:0}
-.mobile-menu ul li a{display:block;padding:14px 0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,247,242,.6);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.08)}
+.mobile-menu ul li a{display:block;padding:14px 0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,247,242,.6);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.05);transition:color .2s}
 .mobile-menu ul li a:hover{color:var(--warm)}
 .mobile-menu .m-cta{display:block;margin-top:20px;padding:13px 24px;background:var(--warm);color:var(--ink);text-align:center;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
 
@@ -39,7 +39,7 @@ body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);ove
 .hero-name{font-family:'Playfair Display',serif;font-size:clamp(46px,6.5vw,86px);font-weight:400;line-height:.95;color:var(--cream);letter-spacing:-.02em;animation:fadeUp .7s .2s ease both}
 .hero-name span{font-style:italic;color:var(--warm);display:block}
 .hero-sub{font-size:12px;font-weight:300;color:rgba(250,247,242,.38);letter-spacing:.2em;text-transform:uppercase;margin:20px 0 32px;animation:fadeUp .7s .3s ease both}
-.hero-tagline{font-family:'Playfair Display',serif;font-size:clamp(16px,1.8vw,21px);font-style:italic;color:rgba(250,247,242,.72);line-height:1.65;max-width:460px;border-left:2px solid var(--warm);padding-left:20px;margin:32px 0;animation:fadeUp .7s .4s ease both}
+.hero-tagline{font-family:'Playfair Display',serif;font-size:clamp(16px,1.8vw,21px);font-style:italic;color:rgba(250,247,242,.72);line-height:1.65;max-width:460px;border-left:2px solid var(--warm);padding-left:18px;margin-bottom:44px;animation:fadeUp .7s .4s ease both}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .7s .5s ease both}
 .btn-p{display:inline-block;padding:13px 30px;background:var(--warm);color:var(--ink);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background .2s}
 .btn-p:hover{background:#C4923A}
@@ -208,8 +208,7 @@ footer p{font-size:11px;color:rgba(250,247,242,.18);letter-spacing:.06em}
     </div>
     <div class="hero-photo-col">
       <div class="photo-frame">
-        <img src="profile.jpg" alt="Kumkum Simare">
-        alt="Kumkum Simare">
+        <img src="images/profile.jpg" alt="Kumkum Simare">
       </div>
       <div class="hero-stats">
         <div class="hs"><div class="hs-num">3+</div><div class="hs-lbl">Years Experience</div></div>
@@ -226,9 +225,9 @@ footer p{font-size:11px;color:rgba(250,247,242,.18);letter-spacing:.06em}
     <h2 class="h2">Strategy first.<br><em>Results always.</em></h2>
     <div class="about-grid">
       <div class="about-body">
-        <p>A results-driven Social Media Manager with <strong>over three years of hands-on experience</strong> — including agency experience — working with international clients across real estate, lifestyle, and B2B sectors.</p>
-        <p>I handle everything end-to-end: strategy, content creation, scheduling, engagement, and performance reporting. Social media under my management isn't just active — it's <strong>consistent, strategic, and built to convert.</strong></p>
-        <p>Whether growing a channel to 2.3 million views, generating 360K Instagram views in 90 days, or building an audience from scratch with zero paid spend — I bring the same discipline and creative approach to every project.</p>
+        <p>A results-driven Social Media Manager with <strong>over three years of hands-on experience</strong> — including agency experience — working with international clients across real estate, lifestyle, and multiple industries.</p>
+        <p>I handle everything end-to-end: strategy, content creation, scheduling, engagement, and performance reporting. Social media under my management isn't just active — it's <strong>consistently working toward real business outcomes</strong>.</p>
+        <p>Whether growing a channel to 2.3 million views, generating 360K Instagram views in 90 days, or building an audience from scratch with zero paid spend — I bring the same discipline and creative precision to every account.</p>
       </div>
       <div class="pillars">
         <div class="pillar"><div class="pt">Consistency</div><div class="pd">Planned weeks ahead, published without gaps — every time, on every platform.</div></div>
@@ -250,11 +249,11 @@ footer p{font-size:11px;color:rgba(250,247,242,.18);letter-spacing:.06em}
     <p class="lbl">What I Do</p>
     <h2 class="h2">Six ways I help<br><em>your brand grow.</em></h2>
     <div class="svc-grid">
-      <div class="svc"><div class="svc-n">01</div><div class="svc-t">Content Creation</div><div class="svc-d">Graphics and video content designed to capture attention — scripted, designed, and edited for maximum impact.</div></div>
-      <div class="svc"><div class="svc-n">02</div><div class="svc-t">Social Media Strategy</div><div class="svc-d">Customised strategies built around your goals, audience, and content pillars — before any content is created.</div></div>
-      <div class="svc"><div class="svc-n">03</div><div class="svc-t">Account Management</div><div class="svc-d">Consistent posting, page optimisation, and complete end-to-end management across all your channels.</div></div>
-      <div class="svc"><div class="svc-n">04</div><div class="svc-t">Engagement &amp; Growth</div><div class="svc-d">Daily engagement in comments, DMs, and within your niche — building a real, relevant, engaged community.</div></div>
-      <div class="svc"><div class="svc-n">05</div><div class="svc-t">Performance Tracking</div><div class="svc-d">Regular analysis, clear reporting, and ongoing optimisation so your social media keeps improving every month.</div></div>
+      <div class="svc"><div class="svc-n">01</div><div class="svc-t">Content Creation</div><div class="svc-d">Graphics and video content designed to capture attention — scripted, designed, and edited personally using Canva and CapCut.</div></div>
+      <div class="svc"><div class="svc-n">02</div><div class="svc-t">Social Media Strategy</div><div class="svc-d">Customised strategies built around your goals, audience, and content pillars — before a single post goes live.</div></div>
+      <div class="svc"><div class="svc-n">03</div><div class="svc-t">Account Management</div><div class="svc-d">Consistent posting, page optimisation, and complete end-to-end management across all your platforms.</div></div>
+      <div class="svc"><div class="svc-n">04</div><div class="svc-t">Engagement &amp; Growth</div><div class="svc-d">Daily engagement in comments, DMs, and within your niche — building a real, relevant audience organically.</div></div>
+      <div class="svc"><div class="svc-n">05</div><div class="svc-t">Performance Tracking</div><div class="svc-d">Regular analysis, clear reporting, and ongoing optimisation so your social media keeps improving over time.</div></div>
       <div class="svc"><div class="svc-n">06</div><div class="svc-t">Brand Positioning</div><div class="svc-d">A consistent voice and visual identity that helps you stand out, build recognition, and own your niche.</div></div>
     </div>
   </div>
@@ -280,19 +279,24 @@ footer p{font-size:11px;color:rgba(250,247,242,.18);letter-spacing:.06em}
     <h2 class="h2">Real screenshots.<br><em>Real numbers.</em></h2>
     <p class="proof-desc">Every number shown here is from actual platform analytics — no estimates, no mockups. This is what consistent strategy and execution looks like.</p>
     <div class="proof-grid">
-      <div class="pc"><div style="background:#DDD;min-height:300px;display:flex;align-items:center;justify-content:center;color:#999">Analytics Screenshot</div>
+      <div class="pc">
+        <img src="images/ig_views.jpg" alt="Instagram Views Analytics">
         <div class="pc-cap"><div class="pc-plat">Instagram · Views Analytics</div><div class="pc-text">360,371 views in 90 days · 235,140 accounts reached</div></div>
       </div>
-      <div class="pc"><div style="background:#DDD;min-height:300px;display:flex;align-items:center;justify-content:center;color:#999">Analytics Screenshot</div>
+      <div class="pc">
+        <img src="images/ig_reel.jpg" alt="Instagram Reel Insights">
         <div class="pc-cap"><div class="pc-plat">Instagram · Reel Insights</div><div class="pc-text">2,183,236 views · 1,339,477 accounts reached · 2,410 new follows</div></div>
       </div>
-      <div class="pc wide"><div style="background:#DDD;min-height:300px;display:flex;align-items:center;justify-content:center;color:#999">Analytics Screenshot</div>
+      <div class="pc wide">
+        <img src="images/yt_alltime.jpg" alt="YouTube Channel Total">
         <div class="pc-cap"><div class="pc-plat">YouTube · All-Time Analytics</div><div class="pc-text">2,281,631 total views · 11,900 watch hours · 4,000+ subscribers gained</div></div>
       </div>
-      <div class="pc wide"><div style="background:#DDD;min-height:300px;display:flex;align-items:center;justify-content:center;color:#999">Analytics Screenshot</div>
+      <div class="pc wide">
+        <img src="images/yt_365days.jpg" alt="YouTube Last 365 Days">
         <div class="pc-cap"><div class="pc-plat">YouTube · Last 365 Days</div><div class="pc-text">235,864 views · 737 watch hours · 63% more subscribers than the year before</div></div>
       </div>
-      <div class="pc wide"><div style="background:#DDD;min-height:300px;display:flex;align-items:center;justify-content:center;color:#999">Analytics Screenshot</div>
+      <div class="pc wide">
+        <img src="images/linkedin.jpg" alt="LinkedIn Post Analytics">
         <div class="pc-cap"><div class="pc-plat">LinkedIn · Post Analytics</div><div class="pc-text">39,072 impressions · 24,669 members reached · 672 reactions · 84 new followers from one post</div></div>
       </div>
     </div>
