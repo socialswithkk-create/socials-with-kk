@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kumkum Simare — Social Media Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#12100E;--cream:#FAF7F2;--warm:#D4A96A;--accent:#A0522D;--soft:#F0EAE0;--muted:#8A7D72;--card:#FFFFFF;--dark:#1E1A17}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--soft)}::-webkit-scrollbar-thumb{background:var(--warm)}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(18,16,14,.85)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:19px;color:var(--cream);text-decoration:none;letter-spacing:.05em}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,247,242,.5);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--warm)}
+.nav-cta{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm);text-decoration:none;border:1px solid rgba(212,169,106,.35);padding:9px 20px;transition:all .2s}
+.nav-cta:hover{background:var(--warm);color:var(--ink)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{width:22px;height:1.5px;background:var(--cream);display:block;transition:all .3s}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(18,16,14,.97);z-index:199;padding:24px 24px 32px;border-bottom:1px solid rgba(212,169,106,.1)}
+.mobile-menu.open{display:block}
+.mobile-menu ul{list-style:none;display:flex;flex-direction:column;gap:0}
+.mobile-menu ul li a{display:block;padding:14px 0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,247,242,.6);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.08)}
+.mobile-menu ul li a:hover{color:var(--warm)}
+.mobile-menu .m-cta{display:block;margin-top:20px;padding:13px 24px;background:var(--warm);color:var(--ink);text-align:center;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+
+/* HERO */
+.hero{min-height:100svh;background:var(--dark);position:relative;overflow:hidden;padding-top:64px}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 75% at 72% 50%,rgba(212,169,106,.07) 0%,transparent 65%);pointer-events:none}
+.hero-inner{display:grid;grid-template-columns:1fr 400px;max-width:1200px;margin:0 auto;padding:0 48px;gap:56px;align-items:center;min-height:calc(100svh - 64px)}
+.hero-text{padding:48px 0}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--warm);margin-bottom:24px;animation:fadeUp .7s .1s ease both}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--warm)}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(46px,6.5vw,86px);font-weight:400;line-height:.95;color:var(--cream);letter-spacing:-.02em;animation:fadeUp .7s .2s ease both}
+.hero-name span{font-style:italic;color:var(--warm);display:block}
+.hero-sub{font-size:12px;font-weight:300;color:rgba(250,247,242,.38);letter-spacing:.2em;text-transform:uppercase;margin:20px 0 32px;animation:fadeUp .7s .3s ease both}
+.hero-tagline{font-family:'Playfair Display',serif;font-size:clamp(16px,1.8vw,21px);font-style:italic;color:rgba(250,247,242,.72);line-height:1.65;max-width:460px;border-left:2px solid var(--warm);padding-left:20px;margin:32px 0;animation:fadeUp .7s .4s ease both}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .7s .5s ease both}
+.btn-p{display:inline-block;padding:13px 30px;background:var(--warm);color:var(--ink);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background .2s}
+.btn-p:hover{background:#C4923A}
+.btn-g{display:inline-block;padding:13px 30px;border:1px solid rgba(250,247,242,.18);color:rgba(250,247,242,.65);font-size:11px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:all .2s}
+.btn-g:hover{border-color:var(--warm);color:var(--warm)}
+.hero-photo-col{padding:40px 0;animation:fadeUp .9s .2s ease both}
+.photo-frame{position:relative;width:100%}
+.photo-frame::before{content:'';position:absolute;top:-14px;left:-14px;right:14px;bottom:14px;border:1px solid rgba(212,169,106,.3);z-index:0;pointer-events:none}
+.photo-frame img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center;position:relative;z-index:1;display:block}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:20px;border:1px solid rgba(212,169,106,.18)}
+.hs{padding:16px 10px;text-align:center;border-right:1px solid rgba(212,169,106,.18)}
+.hs:last-child{border-right:none}
+.hs-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:600;color:var(--warm);line-height:1}
+.hs-lbl{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,247,242,.35);margin-top:5px;line-height:1.4}
+
+/* SHARED */
+.sec{padding:96px 0}
+.w{max-width:1200px;margin:0 auto;padding:0 48px}
+.lbl{font-size:11px;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.h2{font-family:'Playfair Display',serif;font-size:clamp(30px,3.8vw,50px);font-weight:400;line-height:1.1;color:var(--ink);letter-spacing:-.01em}
+.h2 em{font-style:italic;color:var(--accent)}
+.h2-lt{color:var(--cream)}.h2-lt em{color:var(--warm)}
+
+/* ABOUT */
+.about{background:var(--card)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:52px;align-items:start}
+.about-body{font-size:15px;font-weight:300;line-height:1.95;color:#3A3330}
+.about-body p+p{margin-top:16px}
+.about-body strong{font-weight:500;color:var(--ink)}
+.pillars{border:1px solid #EDE8DF}
+.pillar{padding:20px 22px;border-bottom:1px solid #EDE8DF;transition:background .2s}
+.pillar:last-child{border-bottom:none}
+.pillar:hover{background:var(--soft)}
+.pt{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin-bottom:4px}
+.pd{font-size:13px;font-weight:300;color:var(--muted);line-height:1.6}
+
+/* QUOTE */
+.dquote{background:var(--accent);padding:72px 48px;text-align:center}
+.dquote blockquote{font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,40px);font-style:italic;color:var(--cream);max-width:740px;margin:0 auto;line-height:1.4}
+.dquote cite{display:block;margin-top:18px;font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:rgba(250,247,242,.5);font-style:normal}
+
+/* SERVICES */
+.services{background:var(--soft)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#D8D0C4;margin-top:52px;border:1px solid #D8D0C4}
+.svc{background:var(--cream);padding:38px 30px;transition:background .2s}
+.svc:hover{background:var(--card)}
+.svc-n{font-family:'Playfair Display',serif;font-size:38px;color:#ECE5DA;line-height:1;margin-bottom:16px}
+.svc-t{font-size:12px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
+.svc-d{font-size:13px;font-weight:300;line-height:1.7;color:var(--muted)}
+
+/* RESULTS */
+.results-sec{background:var(--dark);padding:96px 0}
+.r-nums{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(212,169,106,.12);border:1px solid rgba(212,169,106,.12);margin:52px 0 12px}
+.rn{padding:40px 20px;text-align:center;background:var(--dark)}
+.rn-v{font-family:'Playfair Display',serif;font-size:clamp(30px,3.5vw,46px);font-weight:600;color:var(--warm);line-height:1}
+.rn-l{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,247,242,.35);margin-top:8px;line-height:1.55}
+.r-note{text-align:center;font-size:12px;font-weight:300;color:rgba(250,247,242,.25);letter-spacing:.08em}
+
+/* PROOF */
+.proof{background:var(--soft);padding:0 0 96px}
+.proof-desc{font-size:14px;font-weight:300;color:var(--muted);line-height:1.75;max-width:540px;margin-top:14px}
+.proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:#CCC5BB;margin-top:44px;border:1px solid #CCC5BB}
+.pc{background:var(--cream);overflow:hidden}
+.pc.wide{grid-column:span 2}
+.pc.mid{grid-column:span 1}
+.pc img{width:100%;display:block;transition:transform .4s;height:auto}
+.pc:hover img{transform:scale(1.015)}
+.pc-cap{padding:10px 14px;background:var(--cream);border-top:1px solid #EAE3D8}
+.pc-plat{font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.pc-text{font-size:11px;font-weight:300;color:var(--muted);margin-top:2px;line-height:1.5}
+
+/* SKILLS */
+.skills-sec{background:var(--card);padding:96px 0}
+.sk-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:48px}
+.sk{padding:15px 16px;border:1px solid #E8E1D6;font-size:13px;font-weight:400;color:var(--ink);cursor:default;transition:all .2s}
+.sk:hover{background:var(--dark);color:var(--cream);border-color:var(--dark)}
+.tools-h{font-size:11px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:36px;margin-bottom:12px}
+.tools-row{display:flex;flex-wrap:wrap;gap:8px}
+.tool{padding:8px 14px;background:var(--soft);font-size:12px;font-weight:300;color:var(--muted);letter-spacing:.04em}
+
+/* CONTACT */
+.contact{background:var(--dark);padding:100px 0}
+.c-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.c-body{font-size:14px;font-weight:300;line-height:1.85;color:rgba(250,247,242,.45);max-width:360px;margin-top:20px}
+.c-links{display:flex;flex-direction:column;gap:10px}
+.cl{display:flex;flex-direction:column;padding:20px 22px;border:1px solid rgba(212,169,106,.12);text-decoration:none;transition:all .2s}
+.cl:hover{border-color:var(--warm);background:rgba(212,169,106,.04)}
+.cl-lbl{font-size:10px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin-bottom:5px}
+.cl-val{font-size:14px;font-weight:300;color:var(--cream);letter-spacing:.02em}
+
+footer{background:var(--dark);border-top:1px solid rgba(212,169,106,.06);padding:22px 48px;display:flex;justify-content:space-between;align-items:center}
+footer p{font-size:11px;color:rgba(250,247,242,.18);letter-spacing:.06em}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav{padding:0 20px}
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .hero-inner{grid-template-columns:1fr;padding:0 20px;gap:0;min-height:auto}
+  .hero-text{padding:36px 0 0}
+  .hero-photo-col{padding:28px 0 40px}
+  .photo-frame::before{display:none}
+  .photo-frame img{aspect-ratio:4/5;max-height:380px}
+  .hero-stats .hs-num{font-size:20px}
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .r-nums{grid-template-columns:repeat(2,1fr)}
+  .proof-grid{grid-template-columns:1fr}
+  .pc.wide,.pc.mid{grid-column:span 1}
+  .sk-grid{grid-template-columns:repeat(2,1fr)}
+  .c-grid{grid-template-columns:1fr;gap:36px}
+  .w{padding:0 20px}
+  .sec{padding:64px 0}
+  .results-sec,.proof,.contact{padding:64px 0}
+  footer{flex-direction:column;gap:6px;text-align:center;padding:18px}
+}
+@media(max-width:480px){
+  .svc-grid{grid-template-columns:1fr}
+  .proof-grid{grid-template-columns:1fr}
+  .pc.wide,.pc.mid{grid-column:span 1}
+  .hero-btns{flex-direction:column}
+  .btn-p,.btn-g{text-align:center}
+  .dquote{padding:56px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="#">Kumkum Simare</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Let's Talk</a>
+  <button class="hamburger" onclick="toggleMobile()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#about" onclick="toggleMobile()">About</a></li>
+    <li><a href="#services" onclick="toggleMobile()">Services</a></li>
+    <li><a href="#results" onclick="toggleMobile()">Results</a></li>
+    <li><a href="#contact" onclick="toggleMobile()">Contact</a></li>
+  </ul>
+  <a class="m-cta" href="#contact" onclick="toggleMobile()">Let's Talk</a>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Social Media Manager</p>
+      <h1 class="hero-name">Kumkum<span>Simare</span></h1>
+      <p class="hero-sub">Content Strategy &nbsp;·&nbsp; Brand Authority &nbsp;·&nbsp; Measurable Growth</p>
+      <p class="hero-tagline">"I turn social media into a consistent system for growth, engagement, and real business results."</p>
+      <div class="hero-btns">
+        <a class="btn-p" href="#results">See My Results</a>
+        <a class="btn-g" href="#contact">Work With Me</a>
+      </div>
+    </div>
+    <div class="hero-photo-col">
+      <div class="photo-frame">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAAAAAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" alt="Kumkum Simare - Social Media Manager">
+      </div>
+      <div class="hero-stats">
+        <div class="hs"><div class="hs-num">3+</div><div class="hs-lbl">Years Experience</div></div>
+        <div class="hs"><div class="hs-num">15+</div><div class="hs-lbl">International Clients</div></div>
+        <div class="hs"><div class="hs-num">7+</div><div class="hs-lbl">Industries Served</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec about" id="about">
+  <div class="w">
+    <p class="lbl">About</p>
+    <h2 class="h2">Strategy first.<br><em>Results always.</em></h2>
+    <div class="about-grid">
+      <div class="about-body">
+        <p>A results-driven Social Media Manager with <strong>over three years of hands-on experience</strong> — including agency experience — working with international clients across real estate, lifestyle, and B2B sectors.</p>
+        <p>I handle everything end-to-end: strategy, content creation, scheduling, engagement, and performance reporting. Social media under my management isn't just active — it's <strong>consistent, strategic, and built to convert.</strong></p>
+        <p>Whether growing a channel to 2.3 million views, generating 360K Instagram views in 90 days, or building an audience from scratch with zero paid spend — I bring the same discipline and creative approach to every project.</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar"><div class="pt">Consistency</div><div class="pd">Planned weeks ahead, published without gaps — every time, on every platform.</div></div>
+        <div class="pillar"><div class="pt">Clarity</div><div class="pd">Messaging built around what your audience actually cares about, not what looks nice.</div></div>
+        <div class="pillar"><div class="pt">Real Results</div><div class="pd">Numbers that actually move — tracked, reported, and optimised continuously.</div></div>
+        <div class="pillar"><div class="pt">Adaptability</div><div class="pd">Real estate, lifestyle, B2B — the strategy shifts to fit the business and the audience.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dquote">
+  <blockquote>"Your social media should add value, not noise."</blockquote>
+  <cite>— Kumkum Simare</cite>
+</div>
+
+<section class="sec services" id="services">
+  <div class="w">
+    <p class="lbl">What I Do</p>
+    <h2 class="h2">Six ways I help<br><em>your brand grow.</em></h2>
+    <div class="svc-grid">
+      <div class="svc"><div class="svc-n">01</div><div class="svc-t">Content Creation</div><div class="svc-d">Graphics and video content designed to capture attention — scripted, designed, and edited for maximum impact.</div></div>
+      <div class="svc"><div class="svc-n">02</div><div class="svc-t">Social Media Strategy</div><div class="svc-d">Customised strategies built around your goals, audience, and content pillars — before any content is created.</div></div>
+      <div class="svc"><div class="svc-n">03</div><div class="svc-t">Account Management</div><div class="svc-d">Consistent posting, page optimisation, and complete end-to-end management across all your channels.</div></div>
+      <div class="svc"><div class="svc-n">04</div><div class="svc-t">Engagement &amp; Growth</div><div class="svc-d">Daily engagement in comments, DMs, and within your niche — building a real, relevant, engaged community.</div></div>
+      <div class="svc"><div class="svc-n">05</div><div class="svc-t">Performance Tracking</div><div class="svc-d">Regular analysis, clear reporting, and ongoing optimisation so your social media keeps improving every month.</div></div>
+      <div class="svc"><div class="svc-n">06</div><div class="svc-t">Brand Positioning</div><div class="svc-d">A consistent voice and visual identity that helps you stand out, build recognition, and own your niche.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="results-sec" id="results">
+  <div class="w">
+    <p class="lbl" style="color:var(--warm)">By The Numbers</p>
+    <h2 class="h2 h2-lt">The work speaks<br><em>for itself.</em></h2>
+    <div class="r-nums">
+      <div class="rn"><div class="rn-v">2.3M</div><div class="rn-l">YouTube Channel<br>Total Views</div></div>
+      <div class="rn"><div class="rn-v">360K</div><div class="rn-l">Instagram Views<br>in 90 Days</div></div>
+      <div class="rn"><div class="rn-v">2.1M</div><div class="rn-l">Single Reel<br>Views Achieved</div></div>
+      <div class="rn"><div class="rn-v">39K</div><div class="rn-l">LinkedIn Post<br>Impressions</div></div>
+    </div>
+    <p class="r-note">All results organic — zero paid advertising</p>
+  </div>
+</section>
+
+<section class="proof" id="proof">
+  <div class="w" style="padding-top:80px">
+    <p class="lbl" style="color:var(--accent)">Platform Analytics</p>
+    <h2 class="h2">Real screenshots.<br><em>Real numbers.</em></h2>
+    <p class="proof-desc">Every number shown here is from actual platform analytics — no estimates, no mockups. This is what consistent strategy and execution looks like.</p>
+    <div class="proof-grid">
+      <div class="pc">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIAOwA7AAD/4QGvRXhpZgAATU0AKgAAAAgABgEAAAMAAAABBDgAAAEBAAMAAAABCSQAAAExAAIAAAApAAAAVodpAAQAAAABAAAAkwESAAMAAAABAAEAAAEyAAIAAAAUAAAAfwAAAABBbmR/" alt="Instagram Views Analytics">
+        <div class="pc-cap"><div class="pc-plat">Instagram · Views Analytics</div><div class="pc-text">360,371 views in 90 days · 235,140 accounts reached</div></div>
+      </div>
+      <div class="pc">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIAOwA7AAD/4QGvRXhpZgAATU0AKgAAAAgABgEAAAMAAAABBDgAAAEBAAMAAAABCSQAAAExAAIAAAApAAAAVodpAAQAAAABAAAAkwESAAMAAAABAAEAAAEyAAIAAAAUAAAAfwAAAABBbmR/" alt="Instagram Reel Insights">
+        <div class="pc-cap"><div class="pc-plat">Instagram · Reel Insights</div><div class="pc-text">2,183,236 views · 1,339,477 accounts reached · 2,410 new follows</div></div>
+      </div>
+      <div class="pc wide">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIAJQAlAAD/2wBDAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5Ojf/" alt="YouTube All-Time Analytics">
+        <div class="pc-cap"><div class="pc-plat">YouTube · All-Time Analytics</div><div class="pc-text">2,281,631 total views · 11,900 watch hours · 4,000+ subscribers gained</div></div>
+      </div>
+      <div class="pc wide">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIAJQAlAAD/2wBDAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5Ojf/" alt="YouTube Last 365 Days">
+        <div class="pc-cap"><div class="pc-plat">YouTube · Last 365 Days</div><div class="pc-text">235,864 views · 737 watch hours · 63% more subscribers than the year before</div></div>
+      </div>
+      <div class="pc wide">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQIAOwA7AAD/4QGvRXhpZgAATU0AKgAAAAgABgEAAAMAAAABBDgAAAEBAAMAAAABCSQAAAExAAIAAAApAAAAVodpAAQAAAABAAAAkwESAAMAAAABAAEAAAEyAAIAAAAUAAAAfwAAAABBbmR/" alt="LinkedIn Post Analytics">
+        <div class="pc-cap"><div class="pc-plat">LinkedIn · Post Analytics</div><div class="pc-text">39,072 impressions · 24,669 members reached · 672 reactions · 84 new followers from one post</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="skills-sec" id="skills">
+  <div class="w">
+    <p class="lbl">Skills &amp; Tools</p>
+    <h2 class="h2">Built for<br><em>every platform.</em></h2>
+    <div class="sk-grid">
+      <div class="sk">Content Strategy</div>
+      <div class="sk">Instagram Growth</div>
+      <div class="sk">Reel Scripting</div>
+      <div class="sk">Graphic Design</div>
+      <div class="sk">Video Editing</div>
+      <div class="sk">Caption Writing</div>
+      <div class="sk">Audience Research</div>
+      <div class="sk">Performance Analytics</div>
+      <div class="sk">YouTube Management</div>
+      <div class="sk">LinkedIn Marketing</div>
+      <div class="sk">Brand Voice</div>
+      <div class="sk">Organic Growth</div>
+    </div>
+    <p class="tools-h">Tools I Use Daily</p>
+    <div class="tools-row">
+      <span class="tool">Canva</span>
+      <span class="tool">CapCut</span>
+      <span class="tool">Metricool</span>
+      <span class="tool">Notion</span>
+      <span class="tool">YouTube Studio</span>
+      <span class="tool">Meta Business Suite</span>
+      <span class="tool">Google Analytics</span>
+      <span class="tool">Sprout Social</span>
+      <span class="tool">Hootsuite</span>
+      <span class="tool">Claude AI</span>
+      <span class="tool">ChatGPT</span>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="w">
+    <div class="c-grid">
+      <div>
+        <p class="lbl" style="color:var(--warm)">Get In Touch</p>
+        <h2 class="h2 h2-lt">Let's build<br><em>something real.</em></h2>
+        <p class="c-body">Ready to turn your social media into a consistent growth engine? Reach out — let's talk about what you're building and how I can help.</p>
+      </div>
+      <div class="c-links">
+        <a class="cl" href="https://instagram.com/kumkumsimare" target="_blank"><span class="cl-lbl">Instagram</span><span class="cl-val">@kumkumsimare</span></a>
+        <a class="cl" href="mailto:simarekumkum@gmail.com"><span class="cl-lbl">Email</span><span class="cl-val">simarekumkum@gmail.com</span></a>
+        <a class="cl" href="https://www.linkedin.com/in/kumkum-simare-57646220a" target="_blank"><span class="cl-lbl">LinkedIn</span><span class="cl-val">linkedin.com/in/kumkum-simare</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Kumkum Simare</p>
+  <p>Social Media Manager · Content &amp; Growth Strategist</p>
+</footer>
+
+<script>
+function toggleMobile(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-64,behavior:'smooth'})}
+  });
+});
+</script>
+</body>
+</html>
